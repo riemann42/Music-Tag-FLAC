@@ -1,0 +1,42 @@
+Music::Tag::FLAC version 0.29
+============================
+
+Music::Tag::FLAC is a plugin module for Music::Tag to gather information
+from FLAC headers.
+
+Note:  As of version 0.28, Music-Tag is distributed as seperate packages.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+   Music::Tag
+   Audio::FLAC::Header
+
+The version info in the Makefile is based on what I use.  You can get 
+away with older versions in many cases. Do not install an older version
+of MP3::Tag.
+
+TEST FILES
+
+Are based on the sample file for Audio::M4P.  For testing only.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2007 Edward J. Allen III
+ealleniii _at_ cpan _dot_ org
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.7 or,
+at your option, any later version of Perl 5 you may have available.
+

@@ -1,0 +1,15 @@
+--- #YAML:1.0
+name:                Music-Tag-FLAC
+version:             0.31
+abstract:            Plugin module for Music::Tag to get information from flac headers. 
+license:             perl
+author:              
+    - Edward Allen (ealleniii _at_ cpan _dot_ org)
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+    Audio::FLAC::Header:           1.7
+    Music::Tag:                    0.27
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
