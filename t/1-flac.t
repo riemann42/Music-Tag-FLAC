@@ -3,6 +3,7 @@ use strict;
 
 use Test::More tests => 15;
 use File::Copy;
+use Digest::SHA1;
 use 5.006;
 
 BEGIN { use_ok('Music::Tag') }
@@ -15,7 +16,7 @@ sub filetest {
     my $filetest    = shift;
     my $testoptions = shift;
   SKIP: {
-        skip "File: $file does not exists", 7 unless ( -f $file );
+        skip "File: $file does not exists", 18 unless ( -f $file );
         return unless ( -f $file );
         copy( $file, $filetest );
         my $tag = Music::Tag->new( $filetest, $testoptions );
@@ -27,7 +28,8 @@ sub filetest {
         is( $tag->album,  "GPL",       'Album: ' . $filetest );
         is( $tag->title,  "Elise",     'Title: ' . $filetest );
         ok( $tag->title("Elise Test"), 'Set new title: ' . $filetest );
-        ok( $tag->set_tag, 'set_tag: ' . $filetest );
+
+        ok($tag->set_tag, 'set_tag: ' . $filetest);
         $tag->close();
         $tag = undef;
         my $tag2 = Music::Tag->new( $filetest, $testoptions );

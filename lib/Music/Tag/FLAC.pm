@@ -79,7 +79,7 @@ use strict;
 use Audio::FLAC::Header;
 
 #use Image::Magick;
-our @ISA = qw(Music::Tag::Generic);
+use base qw(Music::Tag::Generic);
 
 sub flac {
 	my $self = shift;
@@ -229,7 +229,7 @@ Returns the Audio::FLAC::Header object
 
 =head1 BUGS
 
-Plugin does not fully support all fields I would like, such as an APIC frame.
+Plugin does not fully support all fields I would like.  Pictures are read only (limitation of Audio::FLAC::Header).
 
 =head1 SEE ALSO 
 
