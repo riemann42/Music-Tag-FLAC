@@ -19,6 +19,8 @@ my $c = filetest("t/elise.flac", "t/elisetest.flac", {},{
             qw(title artist album genre comment mb_trackid asin
             mb_artistid mb_albumid albumartist  ) ],
 	random_write_num => [ qw(track disc) ],
+	count => 34,
+	plugin => 'FLAC';
 });
 
 
