@@ -47,6 +47,14 @@ our %tagmap = (
     MUSICIP_PUID => 'mip_puid',
     MUSICBRAINZ_ALBUMARTIST => 'albumartist'
 );
+
+sub set_values {
+	return ( values %tagmap, 'picture');
+}
+
+sub saved_values {
+	return ( values %tagmap);
+}
  
 sub get_tag {
     my $self     = shift;
@@ -202,19 +210,27 @@ None currently.
 
 =over 4
 
-=item default_options
+=item B<default_options()>
 
 Returns the default options for the plugin.  
 
-=item set_tag
+=item B<set_tag()>
 
 Save object back to FLAC header.
 
-=item get_tag
+=item B<get_tag()>
 
 Load information from FLAC header.
 
-=item close
+=item B<set_values>
+
+A list of values that can be set by this module.
+
+=item B<saved_values>
+
+A list of values that can be saved by this module.
+
+=item B<close()>
 
 Close the file and destroy the Audio::FLAC::Header
 
