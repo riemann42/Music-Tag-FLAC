@@ -1,4 +1,6 @@
 package Music::Tag::FLAC;
+use strict;
+use warnings;
 our $VERSION = 0.32;
 
 # Copyright (c) 2007 Edward Allen III. Some rights reserved.
@@ -9,7 +11,6 @@ our $VERSION = 0.32;
 #
 
 
-use strict;
 use Audio::FLAC::Header;
 
 #use Image::Magick;
@@ -236,7 +237,7 @@ L<Music::Tag::M4A>, L<Music::Tag::MP3>, L<Music::Tag::MusicBrainz>, L<Music::Tag
 
 Source is available at github: L<http://github.com/riemann42/Music-Tag-FLAC|http://github.com/riemann42/Music-Tag-FLAC>.
 
-=head1 BUGTRACKING
+=head1 BUG TRACKING
 
 Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-FLAC/issues|http://github.com/riemann42/Music-Tag-FLAC/issues>.
 
