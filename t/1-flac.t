@@ -2,7 +2,7 @@
 use strict;
 use Test::More tests => 37;
 use lib 't';
-use MusicTagTest;
+use Music::Tag::Test;
 use 5.006;
 
 BEGIN { use_ok('Music::Tag') }
