@@ -19,8 +19,8 @@ use base qw(Music::Tag::Generic);
 sub flac {
 	my $self = shift;
 	unless ((exists $self->{_Flac}) && (ref $self->{_Flac})) {
-		if ($self->info->filename) {
-			$self->{_Flac} = Audio::FLAC::Header->new($self->info->filename);
+		if ($self->info->has_data('filename')) {
+			$self->{_Flac} = Audio::FLAC::Header->new($self->info->get_data('filename'));
 		}
 	}
 	return $self->{_Flac};
@@ -62,19 +62,19 @@ sub get_tag {
 		while (my ($t, $v) = each %{$self->flac->tags}) {
 			if ((exists $tagmap{$t}) && (defined $v)) {
 				my $method = $tagmap{$t};
-				$self->info->$method($v);
+				$self->info->set_data($method,$v);
 			}
 		}
-        $self->info->secs( $self->flac->{trackTotalLengthSeconds} );
-        $self->info->bitrate( int($self->flac->{bitRate} / 1000) );
+        $self->info->set_data('secs', $self->flac->{trackTotalLengthSeconds} );
+        $self->info->set_data('bitrate', int($self->flac->{bitRate} / 1000) );
 
 		#"MIME type"     => The MIME Type of the picture encoding
 		#"Picture Type"  => What the picture is off.  Usually set to 'Cover (front)'
 		#"Description"   => A short description of the picture
 		#"_Data"	       => The binary data for the picture.
-        if (( $self->flac->picture) && ( not $self->info->picture_exists)) {
+        if (( $self->flac->picture) && ( not $self->info->has_data('picture'))) {
 			my $pic = $self->flac->picture;
-            $self->info->picture( {
+            $self->info->set_data('picture', {
 					"MIME type" => $pic->{mimeType},
 					"Picture Type" => $pic->{description},
 					"_Data"	=> $pic->{imageData},
@@ -88,8 +88,8 @@ sub set_tag {
     my $self = shift;
     if ( $self->flac ) {
 		while (my ($t, $v) = each %tagmap) {
-			if (defined $self->info->$v) {
-				$self->flac->tags->{$t} = $self->info->$v;
+			if ($self->info->has_data($v)) {
+				$self->flac->tags->{$t} = $self->info->get_data($v);
 			}
 		}
         $self->flac->write();
@@ -99,6 +99,7 @@ sub set_tag {
 
 sub close {
 	my $self = shift;
+    $self->{_Flac} = undef;
 	delete $self->{_Flac};
 }
 
