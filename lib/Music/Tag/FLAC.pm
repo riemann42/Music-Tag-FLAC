@@ -1,19 +1,13 @@
 package Music::Tag::FLAC;
-use strict;
-use warnings;
-our $VERSION = .40_01;
+use strict; use warnings; use utf8;
+our $VERSION = '.4101';
 
-# Copyright (c) 2007 Edward Allen III. Some rights reserved.
-
+# Copyright © 2007,2010 Edward Allen III. Some rights reserved.
 #
 # You may distribute under the terms of either the GNU General Public
 # License or the Artistic License, as specified in the README file.
-#
-
 
 use Audio::FLAC::Header;
-
-#use Image::Magick;
 use base qw(Music::Tag::Generic);
 
 sub flac {
@@ -24,7 +18,6 @@ sub flac {
 		}
 	}
 	return $self->{_Flac};
-
 }
 
 our %tagmap = (
@@ -245,6 +238,8 @@ Returns the Audio::FLAC::Header object
 
 Plugin does not fully support all fields I would like.  Pictures are read only (limitation of Audio::FLAC::Header).
 
+Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-FLAC/issues|http://github.com/riemann42/Music-Tag-FLAC/issues>.
+
 =head1 SEE ALSO 
 
 L<Audio::FLAC::Header>, L<Music::Tag>, L<Music::Tag::Amazon>, L<Music::Tag::File>, L<Music::Tag::Lyrics>,
@@ -253,10 +248,6 @@ L<Music::Tag::M4A>, L<Music::Tag::MP3>, L<Music::Tag::MusicBrainz>, L<Music::Tag
 =head1 SOURCE
 
 Source is available at github: L<http://github.com/riemann42/Music-Tag-FLAC|http://github.com/riemann42/Music-Tag-FLAC>.
-
-=head1 BUG TRACKING
-
-Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-FLAC/issues|http://github.com/riemann42/Music-Tag-FLAC/issues>.
 
 =head1 AUTHOR 
 
@@ -290,5 +281,5 @@ http://www.gnu.org/copyleft/gpl.html.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
+Copyright © 2007,2008,2010 Edward Allen III. Some rights reserved.
 

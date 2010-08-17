@@ -4,7 +4,7 @@ WriteMakefile( NAME         => "Music::Tag::FLAC",
                ABSTRACT_FROM  => "lib/Music/Tag/FLAC.pm",
                AUTHOR       => 'Edward Allen (ealleniii _at_ cpan _dot_ org)',
 			   LICENSE		=> 'perl',
-               PREREQ_PM => { 'Music::Tag'			    => 0.40_01, 
+               PREREQ_PM => { 'Music::Tag'			    => 0.4101, 
 			   				  'Audio::FLAC::Header'     => 1.7,
                             },
              );
