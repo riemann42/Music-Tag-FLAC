@@ -11,5 +11,4 @@ t/2-pod.t
 t/3-pod-coverage.t
 t/beethoven.jpg
 t/elise.flac
-t/MusicTagTest.pm
 t/options.conf
