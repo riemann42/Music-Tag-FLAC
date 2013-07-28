@@ -53,8 +53,8 @@ sub get_tag {
     my $self     = shift;
     if ( $self->flac ) {
 		while (my ($t, $v) = each %{$self->flac->tags}) {
-			if ((exists $tagmap{$t}) && (defined $v)) {
-				my $method = $tagmap{$t};
+			if ((exists $tagmap{uc $t}) && (defined $v)) {
+				my $method = $tagmap{uc $t};
 				$self->info->set_data($method,$v);
 			}
 		}
