@@ -10,6 +10,30 @@ our $VERSION = '0.4101';
 use Audio::FLAC::Header;
 use base qw(Music::Tag::Generic);
 
+use constant PICTURE_TYPES => (
+    "Other",
+    "32x32 pixels 'file icon' (PNG only)",
+    "Other file icon",
+    "Cover (front)",
+    "Cover (back)",
+    "Leaflet page",
+    "Media (e.g. label side of CD)",
+    "Lead artist/lead performer/soloist",
+    "Artist/performer",
+    "Conductor",
+    "Band/Orchestra",
+    "Composer",
+    "Lyricist/text writer",
+    "Recording Location",
+    "During recording",
+    "During performance",
+    "Movie/video screen capture",
+    "A bright coloured fish",
+    "Illustration",
+    "Band/artist logotype",
+    "Publisher/Studio logotype",
+);
+
 sub flac {
 	my $self = shift;
 	unless ((exists $self->{_Flac}) && (ref $self->{_Flac})) {
@@ -69,7 +93,8 @@ sub get_tag {
 			my $pic = $self->flac->picture;
             $self->info->set_data('picture', {
 					"MIME type" => $pic->{mimeType},
-					"Picture Type" => $pic->{description},
+					"Picture Type" => (PICTURE_TYPES)[$pic->{pictureType}],
+					"Description" => $pic->{description},
 					"_Data"	=> $pic->{imageData},
 				});
         }
